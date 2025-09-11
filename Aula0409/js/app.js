@@ -7,16 +7,9 @@ button.addEventListener('click', () => {
     return response.json()
   })
     
-  .then(function (data) {
-    list.textContent = `
-    Tittle: ${data[0].title},
-    Body: ${data[0].body}
-    `
-    let listaOrdenada = "<ol>"
-
-    for (usuario in data ) {
-      
-    }
+  .then(function (json) {
+    div.innerText = json.body;
+    div.innerText = JSON.stringify(json, null, 0)
   })
 
 });
