@@ -9,21 +9,27 @@ button.addEventListener('click', () => {
     } 
 
     else {
-      div.innerHTML =          
-      `
-      <div> 
-            <h1> Erro </h1>
-            <h2>404 - Usuário não encontrado</h2>
-         </div>
-        `
+        const msg ="Recurso não encontrado ou servido não disponível, tente novamente mais tarde"
+        throw new Error(msg)
     }
   })
     
   .then(function (json) {
-
     //post agora é um objeto completo dinamicamente do fromraw
     let post = Post.fromRaw(json)
     post.renderFrom(div)
   })
 
+  .catch(function (error){
+    renderError(error)
+  })
+
 });
+
+function renderError(error) {
+  div.innerHTML = `
+  <div>
+    <h2>${error}</h2>
+  </div>
+  `
+}
