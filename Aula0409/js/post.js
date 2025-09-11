@@ -5,4 +5,9 @@ class Post {
         this.tittle = tittle
         this.body = body
     }
+
+    static fromRaw(json) {
+        return new Post(json.userId, json.id, json.title, json.body)
+    }
 }
+
