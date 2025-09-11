@@ -1,13 +1,23 @@
 class Post {
-    constructor(userId, id, tittle, body) {
+    constructor(userId, id, title, body) {
         this.userId = userId
         this.id = id
-        this.tittle = tittle
+        this.title = title
         this.body = body
     }
 
-    static fromRaw(json) {
-        return new Post(json.userId, json.id, json.title, json.body)
+    static fromRaw(raw) {
+        return new Post(raw.userId, raw.id, raw.title, raw.body)
+    }
+
+    renderFrom(container) {
+        container.innerHTML =
+         `
+         <div>
+            <h2>${this.userId}</h2>
+            <h4>${this.title}</h4>
+            <p>${this.body}</p
+         </div>
+        `
     }
 }
-
